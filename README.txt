@@ -9,7 +9,7 @@ Usage guide:
 		(for rc23 guide see man rc23, its a very small manpage)
 	- In colors list you must to define 16 colors in rrggbb format
 	- In generators list you must to define paths to executables, which
-	will generates configs (like colors.kdl or colors.toml)
+	will generate configs (like colors.kdl or colors.toml)
 
 Generators guide:
 	- Generator gets these arguments:

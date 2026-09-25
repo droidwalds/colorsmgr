@@ -7,7 +7,7 @@ fn echo { builtin echo $* >> colors.kdl }
 echo 'colors {' 
 i = 0
 for (color in $*(1-16)) {
-	echo $tab'base'$i "$color"
+	echo $tab'base'$i "'#'$color"
 	i = `{+ $i 1}
 }
 echo '}'
