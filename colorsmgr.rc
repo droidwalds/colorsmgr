@@ -1,0 +1,71 @@
+#!/usr/bin/rc23
+
+# var where functions must put an error message
+fn_err_msg = ''
+
+fn include_config {
+	# build path to the config
+	if (! ~ $XDG_CONFIG_HOME ()) {
+		configs_dir = $XDG_CONFIG_HOME
+	} else {
+		configs_dir = $home/.config
+	}
+	configs_dir = $configs_dir/colorsmgr
+	cfg_path = $configs_dir/config.rc
+
+	# check config existence
+	if (! test -f $cfg_path) {
+		fn_err_msg = $cfg_path' not exists'
+		return 1
+	}
+
+	# include the config
+	. $cfg_path
+
+	# check necessary config variables
+	for (lname in (colors generators)) {
+		if (~ $$lname ()) {
+			fn_err_msg = $lname' list is not defined in the config'
+			return 2
+		}
+	}
+	if (! ~ $#colors 16) {
+		fn_err_msg = '16 colors must be specified'
+		return 3
+	}
+
+	# cleanup
+	cfg_path = ()
+
+	return 0
+}
+
+fn launch_generator(generator_path) {
+	# check generator validity
+	if (! test -x $generator_path) {
+		fn_err_msg = 'not an executable file or not exists'
+		return 1
+	}
+
+	# directory where generators will be puts an output
+	output_dir = $configs_dir/out
+	mkdir -p $output_dir
+
+	# run the generator
+	$generator_path $colors $output_dir
+
+	return 0
+}
+
+# main
+if (! include_config) {
+	echo Failed to load config: $fn_err_msg >[1=2]
+	exit 1
+}
+
+for (generator in $generators) {
+	if (! launch_generator $generator) {
+		echo Error occurred while running $generator: $fn_err_msg >[1=2]
+		exit 2
+	}
+}
