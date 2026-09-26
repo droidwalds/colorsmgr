@@ -50,6 +50,10 @@ fn launch_generator(generator_path) {
 	# directory where generators will be puts an output
 	output_dir = $configs_dir/out
 	mkdir -p $output_dir
+	if (! ~ $status 0) {
+		fn_err_msg = 'failed to create output directory'
+		return 2
+	}
 
 	# run the generator
 	$generator_path $colors $output_dir
