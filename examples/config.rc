@@ -19,5 +19,6 @@ colors = (
 )
 
 generators = (
-	$home'/.config/colorsmgr/generators/kdl-generator.rc'
+	$home'/.config/colorsmgr/generators/foot.rc'
+	$home'/.config/colorsmgr/generators/niri.rc'
 )

@@ -1,0 +1,36 @@
+#!/usr/bin/rc23
+
+outfilename = foot.ini
+
+cd $*(17)
+echo -n > $outfilename
+fn echo { builtin echo $* >> $outfilename }
+
+echo [colors-dark] #if you are using a light theme, change this
+echo background '=' $*(1)
+echo foreground '=' $*(6)
+
+echo regular0 '=' $*(1)
+echo regular1 '=' $*(9)
+echo regular2 '=' $*(12)
+echo regular3 '=' $*(11)
+echo regular4 '=' $*(14)
+echo regular5 '=' $*(15)
+echo regular6 '=' $*(13)
+echo regular7 '=' $*(6)
+
+echo bright0 '=' $*(4)
+echo bright1 '=' $*(9)
+echo bright2 '=' $*(12)
+echo bright3 '=' $*(11)
+echo bright4 '=' $*(14)
+echo bright5 '=' $*(15)
+echo bright6 '=' $*(13)
+echo bright7 '=' $*(8)
+
+echo 16 '=' $*(10)
+echo 17 '=' $*(16)
+echo 18 '=' $*(2)
+echo 19 '=' $*(3)
+echo 20 '=' $*(5)
+echo 21 '=' $*(7)

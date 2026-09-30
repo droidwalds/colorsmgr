@@ -1,0 +1,16 @@
+#!/usr/bin/rc23
+
+outfilename = niri.kdl
+
+cd $*(17)
+echo -n > $outfilename
+fn echo { builtin echo $* >> $outfilename }
+
+echo layout' {'
+echo $tab^focus-ring' {'
+# because in rc23 start idx is 1 and base colors starting with 0,
+# using baseidx+1 for arg index
+echo $tab$tab^active-color "'#'$*(6)"
+echo $tab$tab^inactive-color "'#'$*(2)"
+echo $tab^'}'
+echo '}'
