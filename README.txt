@@ -19,4 +19,4 @@ Generators guide:
 	- Generator must write a config by self to a file in output
 	directory
 
-Examples for config and kdl generator is included in this repo
+Examples for config and generators for niri and foot is included in this repo
