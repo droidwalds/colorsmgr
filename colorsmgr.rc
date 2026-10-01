@@ -57,7 +57,7 @@ fn launch_generator(generator_path) {
 
 	# run the generator
 	$generator_path $colors $output_dir
-	if (! $status 0) {
+	if (! ~ $status 0) {
 		fn_err_msg = 'A generator program returned a non-zero return code'
 		return 3
 	}
